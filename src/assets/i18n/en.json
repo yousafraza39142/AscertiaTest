@@ -1,0 +1,13 @@
+{
+  "add": "Add",
+  "todo" : {
+    "created" : "Todo created",
+    "deleted" : "Todo deleted",
+    "updated" : "Todo Updated"
+  },
+  "todos" : "TODO's",
+  "confirm-proceed": "Are you sure that you want to proceed?",
+  "no-data": "No Data",
+  "add-todos": "Add Todos",
+  "title": "Title"
+}

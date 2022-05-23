@@ -1,0 +1,48 @@
+<p-toast></p-toast>
+<p-confirmPopup></p-confirmPopup>
+
+<p-toolbar>
+  <div class="p-toolbar-group-left">
+    <header translate>todos</header>
+  </div>
+
+  <div class="p-toolbar-group-right">
+    <p-dropdown (ngModelChange)="onLangChang()" [options]="cities" [(ngModel)]="selectedCity" optionLabel="name"></p-dropdown>
+  </div>
+</p-toolbar>
+
+
+<div class="container">
+  <div class="list-container" [formGroup]="addForm">
+
+    <div class="list-head">
+      <input #inputElement (keyup.enter)="showModal(inputElement.value)" pInputText type="text" class="p-inputtext-sm">
+      <button pButton class="p-button-sm" (click)="showModal(inputElement.value)" [label]="'add' | translate "></button>
+    </div>
+
+
+    <div class="list">
+      <div *ngFor="let itm of items" class="list-item" [class.done]="itm.status">
+        <span class="header">{{ itm.name }} &nbsp; <p-tag *ngIf="!itm.status" [rounded]="true">{{itm.date | date}} </p-tag></span>
+        <span class="actions">
+          <button *ngIf="!itm.status" pButton pRipple type="button" (click)="setAsDone( itm.id )" icon="pi pi-check" class="p-button-sm  p-button-rounded p-button-text"></button>&nbsp;&nbsp;
+          <button pButton pRipple type="button" (click)="deleteItem( $event, itm.id )" icon="pi pi-times" class="p-button-rounded p-button-danger p-button-outlined"></button>
+        </span>
+      </div>
+
+      <div *ngIf="!items?.length && !showLoader" style="pointer-events: none" class="list-item" translate>no-data</div>
+    </div>
+  </div>
+</div>
+
+
+<p-dialog [style]="{width: '50vw'}" [modal]="true" [header]="'add-todos' | translate" [(visible)]="showAddModal">
+  <div class="form-container">
+    <input type="text" pInputText [formControl]="fc_name" class="p-button-sm" [placeholder]="'title' | translate">
+    <p-calendar appendTo="body" [formControl]="fc_date"></p-calendar>
+  </div>
+
+  <ng-template pTemplate="footer">
+    <button class="p-button-sm" pButton [disabled]="addForm.invalid || addForm.disabled" (click)="addTodos()" [label]="'add' | translate"></button>
+  </ng-template>
+</p-dialog>

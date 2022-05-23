@@ -1,0 +1,13 @@
+{
+  "add": "Agregar",
+  "todo" : {
+    "created" : "Todo creado",
+    "deleted" : "Todo eliminado",
+    "updated" : "Todo actualizado"
+  },
+  "todos" : "QUE HACER",
+  "confirm-proceed": "Estás seguro de que quieres continuar?",
+  "no-data": "Sin datos",
+  "add-todos": "Añadir Todos",
+  "title": "Título"
+}
